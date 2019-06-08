@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 
-export default class Story extends Component{
+export default class Article extends Component{
   // constructor(){
   //   super()
   //   this.state = {
@@ -11,7 +11,7 @@ export default class Story extends Component{
 
   render(){
     return(
-      <h1>Somthieng</h1>
+      console.log('athing')
     )
   }
 

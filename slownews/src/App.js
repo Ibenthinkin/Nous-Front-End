@@ -24,7 +24,7 @@ export default class App extends Component{
   render(){
     return(
         <div>
-          <h1>Somthieng</h1>
+          <h1 align="center">Slow News</h1>
             {this.state && this.state.users &&
               <Feed user={this.getUser()}/>
             }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import apiConfig from './apiConfig'
 import './App.css';
+import Article from './Article'
 
 export default class Feed extends Component{
   // constructor(){
@@ -10,35 +12,61 @@ export default class Feed extends Component{
   // }
 
   componentDidMount(){
+
+    // console.log(sources.join(','))
+
     this.setState({
       user: (this.props.user)
     })
-  }
-
-  getFeed = () => {
-    const {sources} = this.state.user
+    const {sources} = this.props.user
 
     const url = 'https://newsapi.org/v2/top-headlines'
-    console.log(sources.join(','))
 
-    // fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=apiConfig.newsApi`,
-    fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=apiConfig.newsApi')
+    fetch(`https://newsapi.org/v2/top-headlines?sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
-        .then((stories) => {
+        .then((articles) => {
           this.setState({
-            stories: stories
+            articles: {articles}
           })
         })
   }
+
+  // const lines = props.lines.map((line, i) => <Line {...line}
+  //  key={line.id}
+  //  delete={props.delete}
+  //  update={props.update}/>)
+
+  // getArticles = () => {
+  //   const articlesList = this.state.articles.articles.articles.map((article, i) => <Article/> )
+  //   return articlesList
+  //
+  // }
 
 
 
   render(){
 
     return(
+
       <div>
-        {this.state && this.state.user &&
-          this.getFeed()
+      <h2>{this.props.user.first}</h2>
+        {this.state && this.state.user && this.state.articles &&
+          <p>{this.state.articles.articles.articles}</p> &&
+            <div>
+              {this.state.articles.articles.articles.map((article, i) => {
+                return(
+                  <div key={i}>
+                      <h3>{article.title}</h3>
+                      <h4>By:{article.author}</h4>
+                      <p>{article.content}</p>
+
+                  </div>
+                )
+              } )}
+            </div>
+
+
+
 
         }
       </div>
