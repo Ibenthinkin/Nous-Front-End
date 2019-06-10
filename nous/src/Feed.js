@@ -18,34 +18,37 @@ export default class Feed extends Component{
     })
     const {sources} = this.props.user
 
-    const url = 'https://newsapi.org/v2/top-headlines'
+    const url = `https://newsapi.org/v2/top-headlines`
 
-    fetch(`https://newsapi.org/v2/top-headlines?pageSize=5&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
+    fetch(`${url}?pageSize=5&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
         .then((articles) => {
           this.setState({
             articles: {articles}
           })
-          console.log('totalState', this.state, 'just articles', this.state.articles.articles.articles)
+          // console.log('totalState', this.state, 'just articles', this.state.articles.articles.articles)
         })
-        .then(this.addDescription())
+        .then(this.addSummary())
   }
 
 
 
-  addDescription = () => {
-    this.state.articles.articles.articles.map((article) =>{
-      // fetch('http://api.meaningcloud.com/summarization-1.0?key=8dd6e2647a6a6e278562be67e12a1929&url=https://www.aljazeera.com/news/2019/06/qatari-foreign-minister-urges-de-escalation-iran-dispute-190609165320364.html&sentences=5', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded'
-      //   },
-      // }).then((response) => {return response.json()})
-      // .then((response)=>{
-      //   console.log(response)
-      //   })
-      //
-    })  
+  addSummary = () => {
+    const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
+    console.log(this.state)
+    // const { articles } = this.state.articles.articles
+    // articles.map((article) => {
+    //   fetch(`${summaryURL}${article.url}`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded'
+    //     },
+    //   }).then((response) => {return response.json()})
+    //   .then((response)=>{
+    //     console.log(response)
+    //     })
+    //
+    // })
   }
 
 
