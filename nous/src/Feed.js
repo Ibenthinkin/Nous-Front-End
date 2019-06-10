@@ -17,7 +17,7 @@ export default class Feed extends Component{
       user: (this.props.user)
     })
     const {sources} = this.props.user
-
+    const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
     const url = `https://newsapi.org/v2/top-headlines`
 
     fetch(`${url}?pageSize=5&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
@@ -26,30 +26,34 @@ export default class Feed extends Component{
           this.setState({
             articles: {articles}
           })
-          // console.log('totalState', this.state, 'just articles', this.state.articles.articles.articles)
+          console.log('totalState', this.state, 'just articles', this.state.articles.articles.articles)
         })
-        .then(this.addSummary())
+        // .then(this.addSummary())
+        .then(this.state.articles.articles.articles.forEach((article) =>{
+          console.log(article.title)
+        }
+      ))
   }
 
 
 
-  addSummary = () => {
-    const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
-    console.log(this.state)
-    // const { articles } = this.state.articles.articles
-    // articles.map((article) => {
-    //   fetch(`${summaryURL}${article.url}`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //   }).then((response) => {return response.json()})
-    //   .then((response)=>{
-    //     console.log(response)
-    //     })
-    //
-    // })
-  }
+  // addSummary = () => {
+  //   const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
+  //   console.log(this.state)
+  //   // const { articles } = this.state.articles.articles
+  //   // articles.map((article) => {
+  //   //   fetch(`${summaryURL}${article.url}`, {
+  //   //     method: 'POST',
+  //   //     headers: {
+  //   //       'Content-Type': 'application/x-www-form-urlencoded'
+  //   //     },
+  //   //   }).then((response) => {return response.json()})
+  //   //   .then((response)=>{
+  //   //     console.log(response)
+  //   //     })
+  //   //
+  //   // })
+  // }
 
 
 
