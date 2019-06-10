@@ -15,14 +15,14 @@ export default class App extends Component{
   }
 
   getUser = () => {
-    return this.state.users.filter(user => (user.first === 'Maybe'))[0]
+    return this.state.users.filter(user => (user.first === 'Gob'))[0]
 
   }
 
   render(){
     return(
         <div>
-          <h1 align="center">Slow News</h1>
+          <h1 align="center">Nous</h1>
             {this.state && this.state.users &&
               <Feed user={this.getUser()}/>
             }
