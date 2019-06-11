@@ -14,11 +14,11 @@ export default class Feed extends Component{
     const newsURL = `https://newsapi.org/v2/top-headlines`
     const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
     const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiConfig.meaningApi}&lang=en&url=`
-
-    fetch(`${newsURL}?pageSize=1&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
+    const articlesList = []
+    fetch(`${newsURL}?pageSize=2&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
         .then(articles =>{
-          articles.articles.forEach(article =>{ fetch(`${summaryURL}${article.url}`, {
+          articles.articles.forEach(article =>{fetch(`${summaryURL}${article.url}`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
@@ -38,23 +38,21 @@ export default class Feed extends Component{
                         })
                     .then((response) => {return response.json()})
                         .then((response) => {
-                          const articleWithSentiment = Object.assign( article, response)
-                            this.setState({ articles: [{...this.state.articles, articleWithSentiment} ]})
-                              console.log(this.state)
+                          const articleWithSentiment = Object.assign(article, response)
+                            articlesList.push(articleWithSentiment)
+                            console.log(articlesList)
+
                           })
                   )
           })
         })
+
+        this.setState({articles: articlesList})
+        console.log(articlesList)
+
   }
 
-
-  //
-  // render(){
-  //   return(
-  //     <h1>test</h1>
-  //   )
-  // }
-
+  // this.setState({ articles: [{...this.state.articles, articleWithSentiment }]})
 
 
   render(){
