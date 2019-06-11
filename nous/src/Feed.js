@@ -8,12 +8,10 @@ export default class Feed extends Component {
 
 
   componentDidMount() {
-    // const promises = [this.getArticles(), this.mapOverArticles(), this.repeateOrRender()]
     this.setState({
       user: (this.props.user),
       articles: []
     })
-    // Promise.all(promises)
     this.getArticles()
   }
 
@@ -22,10 +20,9 @@ export default class Feed extends Component {
       sources
     } = this.props.user
     const newsURL = `https://newsapi.org/v2/top-headlines`
-    fetch(`${newsURL}?pageSize=2&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
+    fetch(`${newsURL}?pageSize=10&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
       .then(response => this.mapOverArticles(response))
-    // .then(response => console.log(response))
   }
 
   mapOverArticles = (articles) => {
