@@ -5,33 +5,37 @@ import apiConfig from './apiConfig'
 import './App.css';
 
 export default class Feed extends Component {
+  constructor() {
+    super()
+    this.state = {
+      articles: []
+    }
+  }
 
 
   componentDidMount() {
     this.setState({
-      user: (this.props.user),
-      articles: []
+      user: (this.props.user)
     })
     this.getArticles()
   }
 
   getArticles = () => {
-    const {
-      sources
-    } = this.props.user
-    const newsURL = `https://newsapi.org/v2/top-headlines`
-    fetch(`${newsURL}?pageSize=10&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
+    const {sources} = this.props.user
+    const newsURL = `https://newsapi.org/v2/everything?`
+    fetch(`${newsURL}pageSize=2&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
       .then(response => this.mapOverArticles(response))
   }
 
-  mapOverArticles = (articles) => {
-    const analyzedArticles = articles.articles.map((article) => {
+   mapOverArticles = (articles) => {
+    articles.articles.forEach((article) => {
       this.getSummary(article)
     })
-
-
   }
+  // mapOverArticles = (articles) => {
+  //
+  // }
 
   getSummary = (article) => {
     const summaryURL = `http://api.meaningcloud.com/summarization-1.0?key=${apiConfig.meaningApi}&sentences=5&url=`
@@ -53,7 +57,6 @@ export default class Feed extends Component {
   }
 
   getSentiment = (articleWithSummary) => {
-    // const {articles} = this.state
     const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiConfig.meaningApi}&lang=en&url=`
     fetch(`${sentimentURL}${articleWithSummary.url}`, {
       method: 'POST',
@@ -69,20 +72,20 @@ export default class Feed extends Component {
       return articleWithSentiment
     })
     .then(articleWithSentiment => this.setState({articles: [...this.state.articles, articleWithSentiment]}))
-    .then((response) => this.repeateOrRender())
+    // .then((response) => this.repeateOrRender())
 
   }
 
 
-  repeateOrRender = () => {
-    const {articles} = this.state
-    console.log(articles.length)
-    if (articles.length < 10){
-      setTimeout(this.getArticles(), 1000)
-    } else {
-      return
-    }
-  }
+  // repeateOrRender = () => {
+  //   const {articles} = this.state
+  //   console.log(articles.length)
+  //   if (articles.length < 10){
+  //     setTimeout((this.mapOverArticles), 1000)
+  //   } else {
+  //     return
+  //   }
+  // }
 
 
   //
@@ -144,7 +147,7 @@ export default class Feed extends Component {
   //
   //
   render() {
-    if (this.state && this.state.users && this.state.articles && this.state.articles.length < 10) {
+    if (this.state.articles && this.state.articles.length < 10) {
       return null
     } else {
       return ( <

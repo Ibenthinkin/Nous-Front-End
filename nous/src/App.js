@@ -15,7 +15,7 @@ export default class App extends Component{
   }
 
   getUser = () => {
-    return this.state.users.filter(user => (user.first === 'Maybe'))[0]
+    return this.state.users.filter(user => (user.first === 'Barry'))[0]
 
   }
 
