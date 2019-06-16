@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import apiConfig from './apiConfig'
 import './Feed.css';
+import TitleCard from './TitleCard'
+import Card from './Card'
+
 
 export default class Feed extends Component {
 
@@ -8,88 +11,51 @@ export default class Feed extends Component {
     super(props)
     this.state = {
       articles: [],
-      user: (this.props.user),
+      user: (this.props.users[1]),
       articlesWithSentiment: [],
-      chainLinkComplete: true
+      source: this.props.source
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getArticles()
   }
 
   getArticles = () => {
-    const {sources} = this.props.user
+    const {source} = this.state
     const newsURL = `https://newsapi.org/v2/everything?`
-    fetch(`${newsURL}pageSize=10&sources=${sources.join(',')}&apiKey=${apiConfig.newsApi}`)
+    fetch(`${newsURL}pageSize=20&sources=${source}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
       .then((articles) => this.setState({articles:articles.articles}))
       .catch(error => {console.log(error)});
   }
 
-
-
-
-
-
-    fetchSentiment = async (article) => {
-      const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiConfig.meaningApi}&lang=en&url=`
-      const delay = t => new Promise(resolve => setTimeout(resolve, t));
-          this.setState({chainLinkComplete:false})
-          await fetch(`${sentimentURL}${article.url}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-          })
-          .then((response) => {
-            return response.json()
-          })
-          .then((response) => {
-            const articleWithSentiment = Object.assign(article, response)
-            return articleWithSentiment
-          })
-          .then(articleWithSentiment => this.setState({
-            articlesWithSentiment: [...this.state.articlesWithSentiment, articleWithSentiment]
-          }))
-           delay(1000).then(() => console.log('Hello'));
-    }
-
-
-
+  // changeSource = (source) => {
+  //   this.setState({source: source})
+  // }
+  //
+  // componentDidUpdate(prevProps) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (this.props.source !== prevProps.source) {
+  //
+  //     this.getArticles()
+  //   }
+  // }
 
 
   render() {
-    if (this.state.articles && this.state.articles.length < 10) {
-      return null
-    } else {
+
       return (
         <div className="cardsContainer">
+          <TitleCard changeSource={this.changeSource} user={this.state.user} source={this.state.source}/>
           {this.state.articles.map((news, i) => {
             return (
-              <div className="card" key={i}>
-                <div className="content">
-                  <h3>
-                    <a href={news.url} target="_blank" rel="noopener noreferrer">
-                      {news.title}
-                    </a>
-                  </h3>
-                  <p>{news.description}</p>
-                  <div className="author">
-                    <p>
-                      By <i>{news.author ? news.author : this.props.default}</i>
-                    </p>
-                  </div>
-                </div>
-                <div className="image">
-                  <img src={news.urlToImage} alt="" />
-                </div>
-              </div>
+              <Card news={news} i={i} source={this.state.source}/>
             );
           })}
         </div>
 
       )
     }
-  }
+
 }

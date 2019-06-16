@@ -9,22 +9,23 @@ export default class App extends Component{
       .then(response => response.json())
         .then((users) => {
           this.setState({
-            users: users
+            users: users,
+            source: 'the-new-york-times'
           })
         })
   }
 
-  getUser = () => {
-    return this.state.users.filter(user => (user.first === 'Barry'))[0]
+  // getUser = () => {
+  //   return this.state.users.filter(user => (user.first === 'Maybe'))[0]
+  // }
 
-  }
+
 
   render(){
     return(
         <div>
-          <h1 align="center">Nous</h1>
             {this.state && this.state.users &&
-              <Feed user={this.getUser()}/>
+              <Feed users={this.state.users} source={this.state.source}/>
             }
         </div>
     )
