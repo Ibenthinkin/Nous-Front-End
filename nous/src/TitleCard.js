@@ -3,11 +3,6 @@ import './App.css';
 import Outlet from './Outlet'
 
 export default class TitleCard extends Component {
-  constructor(props){
-    super(props)
-
-  }
-
 
 
 

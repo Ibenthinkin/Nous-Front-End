@@ -19,13 +19,16 @@ export default class App extends Component{
   //   return this.state.users.filter(user => (user.first === 'Maybe'))[0]
   // }
 
+  changeSource = (source) => {
+    this.setState({source: source})
+  }
 
 
   render(){
     return(
         <div>
             {this.state && this.state.users &&
-              <Feed users={this.state.users} source={this.state.source}/>
+              <Feed users={this.state.users} source={this.state.source} changeSource={this.changeSource}/>
             }
         </div>
     )

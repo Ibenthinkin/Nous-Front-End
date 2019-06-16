@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import apiConfig from './apiConfig'
 import './Feed.css';
-import TitleCard from './TitleCard'
-import Card from './Card'
+// import TitleCard from './TitleCard'
+// import Card from './Card'
+import CardsContainer from './CardsContainer'
 
 
 export default class Feed extends Component {
@@ -11,9 +12,7 @@ export default class Feed extends Component {
     super(props)
     this.state = {
       articles: [],
-      user: (this.props.users[1]),
-      articlesWithSentiment: [],
-      source: this.props.source
+      articlesWithSentiment: []
     }
   }
 
@@ -22,7 +21,7 @@ export default class Feed extends Component {
   }
 
   getArticles = () => {
-    const {source} = this.state
+    const source = this.props.source
     const newsURL = `https://newsapi.org/v2/everything?`
     fetch(`${newsURL}pageSize=20&sources=${source}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
@@ -30,9 +29,7 @@ export default class Feed extends Component {
       .catch(error => {console.log(error)});
   }
 
-  // changeSource = (source) => {
-  //   this.setState({source: source})
-  // }
+
   //
   // componentDidUpdate(prevProps) {
   //   // Typical usage (don't forget to compare props):
@@ -42,19 +39,17 @@ export default class Feed extends Component {
   //   }
   // }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps !== this.props){
+      this.getArticles()
+    }
+  }
+
 
   render() {
 
       return (
-        <div className="cardsContainer">
-          <TitleCard changeSource={this.changeSource} user={this.state.user} source={this.state.source}/>
-          {this.state.articles.map((news, i) => {
-            return (
-              <Card news={news} i={i} source={this.state.source}/>
-            );
-          })}
-        </div>
-
+        <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
       )
     }
 

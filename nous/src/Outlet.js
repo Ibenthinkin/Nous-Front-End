@@ -6,8 +6,7 @@ export default class Outlet extends Component {
   constructor(props){
     super(props)
     this.state = {
-      data:[],
-      source: this.props.source
+      data:[]
     }
   }
 
@@ -28,16 +27,12 @@ export default class Outlet extends Component {
 
   handleChange = (event) => {
     this.props.changeSource(event.target.value)
-    this.setState({ source: event.target.value});
+    // this.setState({ source: event.target.value});
   // this.props.changeSource(event.target.value)
   // console.log(this.state.value);
 }
 
-componentDidUpdate = (prevProps) => {
-  if (prevProps !== this.props){
-    console.log(this.props)
-  }
-}
+
 
 
   render(props) {
@@ -46,7 +41,7 @@ componentDidUpdate = (prevProps) => {
     } else {
       return (
         <div className='OutletSelect'>
-        <select value={this.state.source} onChange={this.handleChange}>
+        <select value={this.props.source} onChange={this.handleChange}>
           >
           {this.state.data.sources.map((source, i) => {
             return (
