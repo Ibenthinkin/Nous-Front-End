@@ -6,15 +6,22 @@ export default class Card extends Component {
   constructor(){
     super()
     this.state = {
-      clicked: false,
-      gotSentiment: false
+      clicked: false
     }
   }
 
-  componentDidMount = (props) =>{
+  componentDidMount = (props) => {
 
-    this.getSentiment()
+    setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
   }
+
+  componentDidUpdate = (prevProps) =>{
+    if (this.props.news.title !== prevProps.news.title) {
+      this.setState({articleSentiment: null})
+      setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
+    }
+  }
+
 
 
 
@@ -22,7 +29,6 @@ export default class Card extends Component {
   handleClick = (event) => {
     this.setState({clicked: !this.state.clicked})
   }
-
 
   getSentiment = () => {
     // const delay = t => new Promise(resolve => setTimeout(resolve, t));
@@ -38,13 +44,11 @@ export default class Card extends Component {
       return response.json()
     })
     .then((response) => {
-      this.setState({articleSentiment: response,
-        gotSentiment: true
-      })
+      this.setState({articleSentiment: response})
     })
-    // .then(response=>console.log(this.state.articleSentiment))
+    .then(response=>console.log(this.state.articleSentiment))
 
-    // delay(3000).then(() => console.log(this.state.articleSentiment));
+    // delay(1000).then(() => console.log('Hello'));
     // debugger
   }
 
@@ -53,12 +57,10 @@ export default class Card extends Component {
   render(props){
     const news = this.props.news
     const i = this.props.i
-      if (!this.state.gotSentiment){
-        return null
-      } else {
+
 
         return(
-          <div className="card" key={i} onClick={this.handleClick}>
+          <div className="back" key={i} onClick={this.handleClick}>
             <div className="content">
               <h3>
                 <a href={news.url} target="_blank" rel="noopener noreferrer">
@@ -71,15 +73,51 @@ export default class Card extends Component {
                   By <i>{news.author ? news.author : this.props.source}</i>
                 </p>
                 <p>
-                  Sentiment Scoire <i>{this.state.articleSentiment ? `sentiment score` : `NO sentiment score`}</i>
+                  Sentiment Score <i>{this.state.articleSentiment ? `sentiment score` : `NO sentiment score`}</i>
                 </p>
               </div>
             </div>
           </div>
-        )}
+        )
 
   }
 
 
-
 }
+
+
+
+//
+// Props
+// i:
+// 2
+// news:
+// {…}
+// source:
+// "wired"
+// State
+// articleSentiment:
+// {…}
+// agreement:
+// "DISAGREEMENT"
+// confidence:
+// "76"
+// irony:
+// "IRONIC"
+// model:
+// "general_en"
+// score_tag:
+// "P"
+// sentence_list:
+// Array[224]
+// sentimented_concept_list:
+// Array[155]
+// sentimented_entity_list:
+// Array[52]
+// status:
+// {…}
+// subjectivity:
+// "SUBJECTIVE"
+//
+// clicked:
+// false
