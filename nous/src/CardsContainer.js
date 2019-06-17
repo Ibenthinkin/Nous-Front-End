@@ -18,7 +18,7 @@ export default class CardsContainer extends Component {
         {this.props.articles.map((news, i) => {
           return (
             <Card news={news} i={i} source={this.props.source}/>
-          );
+          )
         })}
       </div>
     )

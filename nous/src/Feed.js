@@ -23,7 +23,7 @@ export default class Feed extends Component {
   getArticles = () => {
     const source = this.props.source
     const newsURL = `https://newsapi.org/v2/everything?`
-    fetch(`${newsURL}pageSize=20&sources=${source}&apiKey=${apiConfig.newsApi}`)
+    fetch(`${newsURL}pageSize=10&sources=${source}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
       .then((articles) => this.setState({articles:articles.articles}))
       .catch(error => {console.log(error)});

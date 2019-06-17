@@ -26,7 +26,7 @@ export default class App extends Component{
 
   render(){
     return(
-        <div>
+        <div className='body'>
             {this.state && this.state.users &&
               <Feed users={this.state.users} source={this.state.source} changeSource={this.changeSource}/>
             }
