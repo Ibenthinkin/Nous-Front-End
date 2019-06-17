@@ -1,4 +1,7 @@
 const reds = {
+  rgba(219,	29,	19,	1)
+
+
   rgba(210,	29,	36,	1)
   rgba(229,	32,	39,	1)
   rgba(60, 8,	10,1)
@@ -16,18 +19,26 @@ const oranges = {
   rgba(231,	103,	44,1)
   rgba(205,	74,	38,1)
 }
-
+#99CC9
+#E5202
 
 const yellows = {
+  rgba(247,	200,	40,	1)
+
   rgba(246,	184,	55,	1)
+
+
 }
 
-
-
 const blues = {
+rgba(37,	51,	139,	1)
+
 rgba(8,	46,	126,	1)
+
 }
 
 const beige = {
+    #fafafa
   rgba(247,241,225,1)
+
 }

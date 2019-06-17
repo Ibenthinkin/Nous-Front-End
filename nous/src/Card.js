@@ -47,9 +47,10 @@ export default class Card extends Component {
       this.setState({articleSentiment: response})
     })
     .then(response=>console.log(this.state.articleSentiment))
+  }
 
-    // delay(1000).then(() => console.log('Hello'));
-    // debugger
+  colorizer = () => {
+
   }
 
 
@@ -59,7 +60,7 @@ export default class Card extends Component {
     const i = this.props.i
 
         return(
-          <div className="back" key={i} onClick={this.handleClick}>
+          <div className="card" key={i} onClick={this.handleClick}>
             <div className="content">
               <h3>
                 <a href={news.url} target="_blank" rel="noopener noreferrer">
@@ -69,22 +70,23 @@ export default class Card extends Component {
               <p>{news.description}</p>
               <div className="author">
                 <p>
-                  By <i>{news.author ? news.author : this.props.source}</i>
+                  <p> By{news.author ? news.author : this.props.source}</p>
                 </p>
                 <p>
-                  Sentiment Score <i>{this.state.articleSentiment ? this.state.articleSentiment.score_tag : `NO sentiment score`}</i>
+                  Sentiment Score <p>{this.state.articleSentiment ? `${this.state.articleSentiment.score_tag} - ${this.state.articleSentiment.confidence}`: `NO sentiment score`}</p>
                 </p>
               </div>
             </div>
           </div>
         )
-
   }
 
 
 }
-
-
+//
+// const blue = rgba(8,	46,	126,	1)
+// const yellow = rgba(247,	200,	40,	1)
+// const red =  rgba(219,	29,	19,	1)
 
 //
 // Props

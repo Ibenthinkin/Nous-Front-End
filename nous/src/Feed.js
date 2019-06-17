@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import apiConfig from './apiConfig'
-import './Feed.css';
-// import TitleCard from './TitleCard'
+import './App.css';
+import NavBar from './Navbar'
 // import Card from './Card'
 import CardsContainer from './CardsContainer'
 
@@ -49,8 +49,14 @@ export default class Feed extends Component {
   render() {
 
       return (
-        <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
-      )
+        <div className='pageWrapper'>
+          <NavBar articles={this.props.articles}
+          changeSource={this.props.changeSource}
+          user={this.props.user}
+          source={this.props.source}/>
+          <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
+        </div>
+        )
     }
 
 }
