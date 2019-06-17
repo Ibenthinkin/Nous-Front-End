@@ -58,7 +58,6 @@ export default class Card extends Component {
     const news = this.props.news
     const i = this.props.i
 
-
         return(
           <div className="back" key={i} onClick={this.handleClick}>
             <div className="content">
@@ -73,7 +72,7 @@ export default class Card extends Component {
                   By <i>{news.author ? news.author : this.props.source}</i>
                 </p>
                 <p>
-                  Sentiment Score <i>{this.state.articleSentiment ? `sentiment score` : `NO sentiment score`}</i>
+                  Sentiment Score <i>{this.state.articleSentiment ? this.state.articleSentiment.score_tag : `NO sentiment score`}</i>
                 </p>
               </div>
             </div>
