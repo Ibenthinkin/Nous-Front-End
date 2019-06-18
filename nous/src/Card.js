@@ -77,6 +77,21 @@ export default class Card extends Component {
     this.setState({clicked: !this.state.clicked})
   }
 
+  lengthenScoreTag = () => {
+    let {score_tag} = this.state.articleSentiment
+    switch(score_tag){
+      case "P":
+        return `Positive`
+        break;
+      case "N":
+        return `Negative`
+        break;
+      default:
+          return `Neutral`
+    }
+
+  }
+
 
   render(props){
     const news = this.props.news
@@ -96,10 +111,7 @@ export default class Card extends Component {
               </h3>
               <p>{news.description}</p>
                   <p> By {news.author ? news.author : this.props.source}</p>
-                <p>
-                  Sentiment Score <p>{this.state.articleSentiment ? `${this.state.articleSentiment.score_tag} - ${this.state.articleSentiment.confidence}`: `NO sentiment score`}</p>
-                </p>
-
+                  <p>Sentiment Score: {this.state.articleSentiment ? ` ${this.lengthenScoreTag()} - ${this.state.articleSentiment.confidence}`: `NO sentiment score`}</p>
             </div>
           </div>
         )
