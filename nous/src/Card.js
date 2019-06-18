@@ -1,37 +1,29 @@
 import React, {Component} from 'react'
 import apiConfig from './apiConfig'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 export default class Card extends Component {
   constructor(){
     super()
     this.state = {
-      clicked: false
+      clicked: false,
+      hover: true
     }
   }
 
   componentDidMount = (props) => {
-
     setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
   }
 
   componentDidUpdate = (prevProps) =>{
     if (this.props.news.title !== prevProps.news.title) {
-      this.setState({articleSentiment: null})
+      this.setState({articleSentiment: null, color: null})
       setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
     }
   }
 
-
-
-
-
-  handleClick = (event) => {
-    this.setState({clicked: !this.state.clicked})
-  }
-
   getSentiment = () => {
-    // const delay = t => new Promise(resolve => setTimeout(resolve, t));
     const {url} = this.props.news
     const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiConfig.meaningApi}&lang=en&url=`
     fetch(`${sentimentURL}${url}`, {
@@ -47,12 +39,43 @@ export default class Card extends Component {
       this.setState({articleSentiment: response})
     })
     .then(response=>console.log(this.state.articleSentiment))
-  }
-
-  colorizer = () => {
+    .then(response=> this.setColor())
 
   }
 
+  setColor = () => {
+    const {articleSentiment} = this.state
+    // const blue = rgba(8, 46,	126,	1)
+    // const yellow = rgba(247,	200,	40,	1)
+    // const red =  rgba(219,	29,	19,	1)
+    // lighter blue = rgba(164,210,212,1)
+    let colorValueNumber = articleSentiment.confidence
+    if(articleSentiment.confidence > 86){colorValueNumber += 10} else {colorValueNumber -= 20}
+    let colorValue = `.${colorValueNumber}`
+    let tone = ``
+      switch(articleSentiment.score_tag) {
+        case "P":
+          tone = `164,210,212`
+          break;
+        case "N":
+        tone = `219,29,19`
+          break;
+        default:
+          tone = `247,200,40`
+      }
+      const color = `rgba(${tone}, ${colorValue})`
+
+      this.setState({color: color})
+  }
+
+
+  toggleHover = () => {
+    this.setState({hover: !this.state.hover})
+  }
+
+  handleClick = (event) => {
+    this.setState({clicked: !this.state.clicked})
+  }
 
 
   render(props){
@@ -60,7 +83,11 @@ export default class Card extends Component {
     const i = this.props.i
 
         return(
-          <div className="card" key={i} onClick={this.handleClick}>
+          <div className='card' key={i} onClick={this.handleClick}
+            onMouseEnter={this.toggleHover}
+              onMouseLeave={this.toggleHover}
+              style={{backgroundColor: this.state.color ? this.state.color : 'rgba(130,127,123,.8)' }}
+              >
             <div className="content">
               <h3>
                 <a href={news.url} target="_blank" rel="noopener noreferrer">
@@ -68,14 +95,11 @@ export default class Card extends Component {
                 </a>
               </h3>
               <p>{news.description}</p>
-              <div className="author">
-                <p>
-                  <p> By{news.author ? news.author : this.props.source}</p>
-                </p>
+                  <p> By {news.author ? news.author : this.props.source}</p>
                 <p>
                   Sentiment Score <p>{this.state.articleSentiment ? `${this.state.articleSentiment.score_tag} - ${this.state.articleSentiment.confidence}`: `NO sentiment score`}</p>
                 </p>
-              </div>
+
             </div>
           </div>
         )
