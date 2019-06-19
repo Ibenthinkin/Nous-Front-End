@@ -52,7 +52,6 @@ export default class Feed extends Component {
         <div className='pageWrapper'>
           <NavBar articles={this.props.articles}
           changeSource={this.props.changeSource}
-          user={this.props.user}
           source={this.props.source}/>
           <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
         </div>

@@ -10,18 +10,21 @@ export default class NavBar extends Component {
   render(props) {
     return (
       <div className='NavBar'>
-        <h1>NOUS</h1>
+        <h1 className='banner'>NOUS</h1>
         <h3>Click on story to display its emotional impact as a color</h3>
-        <Outlet changeSource={this.props.changeSource} user={this.props.user} source={this.props.source}/>
+        <Outlet changeSource={this.props.changeSource} source={this.props.source}/>
         <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/Login">Login</Link>
+          <Link to="/login">Login</Link>
         </li>
         <li>
-          <Link to="/About">About</Link>
+          <Link to="/signup">Sign up</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>

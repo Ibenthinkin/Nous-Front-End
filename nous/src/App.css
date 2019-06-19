@@ -7,6 +7,9 @@ grey rgba(130,	127,	123,	1)
 another tan rgba(232,	214,	177,	1)
 */
 
+/* font-family: 'Raleway', sans-serif;
+font-family: 'Muli', sans-serif;
+font-family: 'Baumans', cursive; */
 
 
   html {
@@ -27,6 +30,21 @@ another tan rgba(232,	214,	177,	1)
   max-width: 80%;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.banner {
+  font-family: 'Baumans', cursive;
+  font-weight: 600;
+  font-size: 400%;
+}
+
+a {
+  font-family: 'Raleway', sans-serif;
+}
+
+p{
+  font-family: 'Raleway', sans-serif;
+
 }
 
 
@@ -54,9 +72,85 @@ padding: 1em;
   color: rgba(130,	127,	123,	.1);
 }
 
-
 .card:hover p {
   color: black;
   transition: 1s ease-in-out;
-
 }
+
+
+.wide-input {
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 300px;
+}
+
+/* .mean-button {
+  // @include button;
+  &:hover {
+    color: #fff;
+    background-color: rgba(255, 0, 0, .75);
+    border: 1px solid rgba(255, 0, 0, 1);
+  }
+} */
+
+.login-signup-form {
+  margin: 10% auto;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 200px;
+  padding: 10px 30px 50px;
+  transition: .5s ease-in-out;
+  &>h1{
+    transition: .5s ease-in-out;
+  }
+  &>input {
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+  &:hover {
+    border: 1px solid black;
+  }
+  &>h1:hover {
+    color: black;
+  }
+}
+
+
+/* .nice-button {
+  // @include button;
+  &:hover {
+    color: #fff;
+    background-color: rgba(0, 255, 0, .5);
+    border: 1px solid rgba(0, 255, 0, 1);
+  }
+}
+
+.blue-button {
+  // @include button;
+  &:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 255, .33);
+    border: 1px solid rgba(0, 0, 255, .33);
+    transition: .75s ease-in-out;
+  }
+}
+
+.red-button {
+  // @include button;
+  &:hover {
+    color: #fff;
+    background-color: rgba(255, 0, 0, .33);
+    border: 1px solid rgba(255, 0, 0, .33);
+    transition: .75s ease-in-out;
+  }
+}
+
+.green-button {
+  // @include button;
+  &:hover {
+    color: #fff;
+    background-color: rgba(0, 255, 0, .33);
+    border: 1px solid rgba(0, 255, 0, .33);
+    transition: .75s ease-in-out;
+  }
+} */

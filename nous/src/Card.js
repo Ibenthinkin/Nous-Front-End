@@ -82,10 +82,10 @@ export default class Card extends Component {
     switch(score_tag){
       case "P":
         return `Positive`
-        break;
+        // break;
       case "N":
         return `Negative`
-        break;
+        // break;
       default:
           return `Neutral`
     }
