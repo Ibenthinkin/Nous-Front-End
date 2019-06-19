@@ -24,27 +24,19 @@ font-family: 'Baumans', cursive; */
   max-width: 60%;
   padding: 6rem; */
 /* }  */
-
+/*
 .NavBar{
   display: block;
   max-width: 80%;
   margin: 0 auto;
   padding: 2rem;
-}
+} */
 
-.banner {
-  font-family: 'Baumans', cursive;
-  font-weight: 600;
-  font-size: 400%;
-}
+
 
 a {
-  font-family: 'Raleway', sans-serif;
-}
-
-p{
-  font-family: 'Raleway', sans-serif;
-
+  text-decoration: none;
+  color: black;
 }
 
 
@@ -58,9 +50,11 @@ max-width: 80%;
 padding: 2rem;
 }
 
-a, a:hover {
+ .card a:hover {
   color: black;
   text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
 }
 .card {
 background-color: rgba(130,	127, 123, .8);
@@ -68,8 +62,17 @@ border-radius: 10px;
 padding: 1em;
 }
 
+.card a {
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+
+
 .card p {
   color: rgba(130,	127,	123,	.1);
+  font-family: 'Raleway', sans-serif;
 }
 
 .card:hover p {
@@ -115,42 +118,93 @@ padding: 1em;
   }
 }
 
+/* Style the navigation bar */
+.navbar {
+  /* margin-left: 6rem; */
+  align-items: center;
+  width: 100%;
+  background-color: rgba(232,	214,	177,	1);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
 
-/* .nice-button {
-  // @include button;
-  &:hover {
-    color: #fff;
-    background-color: rgba(0, 255, 0, .5);
-    border: 1px solid rgba(0, 255, 0, 1);
-  }
 }
 
-.blue-button {
-  // @include button;
-  &:hover {
-    color: #fff;
-    background-color: rgba(0, 0, 255, .33);
-    border: 1px solid rgba(0, 0, 255, .33);
-    transition: .75s ease-in-out;
-  }
+ .navbar .banner {
+  font-family: 'Baumans', cursive;
+  font-weight: 600;
+  font-size: 300%;
 }
 
-.red-button {
-  // @include button;
-  &:hover {
-    color: #fff;
-    background-color: rgba(255, 0, 0, .33);
-    border: 1px solid rgba(255, 0, 0, .33);
-    transition: .75s ease-in-out;
-  }
+/* Navbar links */
+/* .navbar a { */
+  /* float: left; */
+
+  /* text-align: center; */
+  /* padding: 12px; */
+  /* color: white;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-.green-button {
-  // @include button;
-  &:hover {
-    color: #fff;
-    background-color: rgba(0, 255, 0, .33);
-    border: 1px solid rgba(0, 255, 0, .33);
-    transition: .75s ease-in-out;
-  }
+/* Navbar links on mouse-over */
+/* .navbar a:hover {
+  background-color: #000;
 } */
+
+/* Current/active navbar link */
+/* .active {
+  background-color: #4CAF50;
+} */
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

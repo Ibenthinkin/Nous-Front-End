@@ -32,11 +32,7 @@ export default class App extends Component{
 
   render(){
     return(
-
-        <div className='body'>
           <Feed source={this.state.source} changeSource={this.changeSource}/>
-        </div>
-
     )
   }
 
