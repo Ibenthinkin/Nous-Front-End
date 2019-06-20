@@ -42,7 +42,7 @@ export default class App extends Component{
   render(){
     return(
       <div id="app" className='pageWrapper'>
-        <SideMenu toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
+        <SideMenu  source={this.state.source} changeSource={this.changeSource} toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
           <Feed source={this.state.source} changeSource={this.changeSource} toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
       </div>
     )

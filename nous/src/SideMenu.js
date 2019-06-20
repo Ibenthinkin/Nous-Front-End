@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import './App.css';
 import Outlet from './Outlet'
+// import ColorKey from './ColorKey'
 
-// import Outlet from './Outlet'
-// import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
 
 export default class SideMenu extends Component {
@@ -19,37 +19,24 @@ export default class SideMenu extends Component {
 
     return (
       <div id="mySidenav" className='sidenav' style={{width: this.props.sideMenuOpen ? 200 : 0 }}>
-        <a href="#" class="closebtn" onclick="closeNav()"></a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Sign up</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
           <Outlet changeSource={this.props.changeSource} source={this.props.source}/>
-
+            <div className='ColorKey'>
+              <div className='colorSwatch blue' style={{backgroundColor:`rgba(164,210,212,1)`}}>
+                <p>Positive</p>
+              </div>
+              <div className='colorSwatch yellow' style={{backgroundColor:`rgba(247,	200,	40,	1)`}}>
+                <p>Neutral</p>
+              </div>
+              <div className='colorSwatch red' style={{backgroundColor:`rgba(219,	29,	19,	1)`}}>
+                <p>Negative</p>
+              </div>
+            </div>
       </div>
     )
   }
 }
-
-// <div className='NavBar'>
-//   <h1 className='banner'>NOUS</h1>
-//   <h3>Click on story to display its emotional impact as a color</h3>
-//   <Outlet changeSource={this.props.changeSource} source={this.props.source}/>
-//   <ul>
-//   <li>
-//     <Link to="/">Home</Link>
-//   </li>
-//   <li>
-//     <Link to="/login">Login</Link>
-//   </li>
-//   <li>
-//     <Link to="/signup">Sign up</Link>
-//   </li>
-//   <li>
-//     <Link to="/about">About</Link>
-//   </li>
-//   <li>
-//     <Link to="/contact">Contact</Link>
-//   </li>
-// </ul>
-// </div>
