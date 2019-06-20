@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import apiConfig from './apiConfig'
 import './App.css';
 import NavBar from './Navbar'
-// import Card from './Card'
+import SideMenu from './SideMenu'
 import CardsContainer from './CardsContainer'
 
 
@@ -12,7 +12,8 @@ export default class Feed extends Component {
     super(props)
     this.state = {
       articles: [],
-      articlesWithSentiment: []
+      articlesWithSentiment: [],
+      sideMenuOpen: this.props.sideMenuOpen
     }
   }
 
@@ -46,15 +47,17 @@ export default class Feed extends Component {
   }
 
 
-  render() {
+  render(props) {
 
       return (
-        <div className='pageWrapper'>
+        <div className='feedbody' style={{marginLeft: this.props.sideMenuOpen ? 200 : 0 }}>
           <NavBar articles={this.props.articles}
           changeSource={this.props.changeSource}
-          source={this.props.source}/>
+          source={this.props.source}
+          toggleMenu={this.props.toggleMenu}/>
           <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
         </div>
+
         )
     }
 

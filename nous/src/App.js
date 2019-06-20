@@ -1,13 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
 import Feed from './Feed'
+import SideMenu from './SideMenu'
 
 export default class App extends Component{
   constructor(){
     super()
     this.state = {
-      source: 'the-new-york-times'
+      source: 'the-new-york-times',
+      sideMenuOpen: false
+
     }
+  }
+
+  toggleMenu = (event) =>{
+    this.setState({
+      sideMenuOpen: !this.state.sideMenuOpen
+    })
   }
 
  // componentDidMount () {
@@ -32,7 +41,10 @@ export default class App extends Component{
 
   render(){
     return(
-          <Feed source={this.state.source} changeSource={this.changeSource}/>
+      <div id="app" className='pageWrapper'>
+        <SideMenu toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
+          <Feed source={this.state.source} changeSource={this.changeSource} toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
+      </div>
     )
   }
 
