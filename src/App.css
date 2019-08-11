@@ -4,41 +4,16 @@ const red =  rgba(219,	29,	19,	1)
 TAN = rgba(227,197,163,1)
 rgba(248,	240,	222,	1)
 grey rgba(130,	127,	123,	1)
-another tan rgba(232,	214,	177,	1)
-*/
-
-/* font-family: 'Raleway', sans-serif;
-font-family: 'Muli', sans-serif;
-font-family: 'Baumans', cursive; */
-
+another tan rgba(232,	214,	177,	1)*/
 
   html {
     background-color: rgba(232,	214,	177,	1);
   }
 
-/* .body {
-  background-color: rgba(247,241,225,1);
-  /* display: grid; */
-  /* margin: 0 auto;
-  display: grid;
-  max-width: 60%;
-  padding: 6rem; */
-/* }  */
-/*
-.NavBar{
-  display: block;
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 2rem;
-} */
-
-
-
 a {
   text-decoration: none;
   color: black;
 }
-
 
 .cardsContainer {
 margin: 0 auto;
@@ -86,16 +61,7 @@ padding: 1em;
   padding: 5px;
   width: 300px;
 }
-
-/* .mean-button {
-  // @include button;
-  &:hover {
-    color: #fff;
-    background-color: rgba(255, 0, 0, .75);
-    border: 1px solid rgba(255, 0, 0, 1);
-  }
-} */
-
+/* 
 .login-signup-form {
   margin: 10% auto;
   border: 1px solid #ccc;
@@ -116,11 +82,11 @@ padding: 1em;
   &>h1:hover {
     color: black;
   }
-}
+} */
 
-/* Style the navigation bar */
+
+
 .navbar {
-  /* margin-left: 6rem; */
   align-items: center;
   width: 100%;
   background-color: rgba(232,	214,	177,	1);
@@ -149,36 +115,6 @@ padding: 1em;
   color: rgba(0,0,0,.6);
   transition: .4s;
 }
-
-/* Navbar links */
-/* .navbar a { */
-  /* float: left; */
-
-  /* text-align: center; */
-  /* padding: 12px; */
-  /* color: white;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Navbar links on mouse-over */
-/* .navbar a:hover {
-  background-color: #000;
-} */
-
-/* Current/active navbar link */
-/* .active {
-  background-color: #4CAF50;
-} */
-
-/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
- /*@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-  }
-}*/
-
 
 .sidenav {
   height: 70%;
@@ -253,24 +189,6 @@ margin-left: 50px;
   color: rgba(0,0,0,.6);
   transition: .4s;
 }
-
-/* .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-} */
-
-/* #main {
-  transition: margin-left .5s;
-  padding: 16px;
-} */
-
-/* @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-} */
 
 .fa {
   font-size: 200%

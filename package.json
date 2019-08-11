@@ -1,16 +1,14 @@
 {
-  "name": "slownews",
+  "name": "nous",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-burger-menu": "^2.6.10",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-select": "^3.0.4",
-    "uikit": "^3.1.5"
+    "react-select": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

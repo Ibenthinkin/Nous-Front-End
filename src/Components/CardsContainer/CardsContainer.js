@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
-import Card from './Card'
+import Card from '../Card/Card'
 
 export default class CardsContainer extends Component {
 
@@ -14,7 +13,8 @@ export default class CardsContainer extends Component {
           return (
             <Card news={news} i={i} source={this.props.source}/>
           )
-        })}
+        }
+        )}
       </div>
     )
   }

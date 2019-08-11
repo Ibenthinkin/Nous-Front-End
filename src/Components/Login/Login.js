@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import './App.css';
+// import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
-
-  // static propTypes = {
-  //   onSubmit: PropTypes.func,
-  //   title: PropTypes.string
-  // };
-
-  state = {
-    username: '',
-    password: ''
-  };
-
+  constructor() {
+    super()  
+      this.state = {
+          username: '',
+          password: ''
+        };
+    }
   handleSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state);
@@ -31,10 +26,7 @@ export default class Login extends Component {
   };
 
   render() {
-    // if(utils.getToken()) {
-    //   return <Redirect to={'/' + utils.getUserName() + '/palates'} />;
-    // }
-
+ 
     const { username, password } = this.state;
     return (
     <div className='page'>

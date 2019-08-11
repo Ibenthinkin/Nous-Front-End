@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import apiConfig from './apiConfig'
-import './App.css';
-import NavBar from './Navbar'
-import SideMenu from './SideMenu'
-import CardsContainer from './CardsContainer'
+import apiConfig from '../apiConfig'
+import NavBar from '../Navbar/Navbar'
+import CardsContainer from '../CardsContainer/CardsContainer'
 
 
 export default class Feed extends Component {
@@ -29,16 +27,6 @@ export default class Feed extends Component {
       .then((articles) => this.setState({articles:articles.articles}))
       .catch(error => {console.log(error)});
   }
-
-
-  //
-  // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (this.props.source !== prevProps.source) {
-  //
-  //     this.getArticles()
-  //   }
-  // }
 
   componentDidUpdate = (prevProps) => {
     if (prevProps !== this.props){

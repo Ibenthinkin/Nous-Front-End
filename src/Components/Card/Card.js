@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import apiConfig from './apiConfig'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import apiConfig from '../apiConfig'
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 export default class Card extends Component {
@@ -13,13 +13,13 @@ export default class Card extends Component {
   }
 
   componentDidMount = (props) => {
-    setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
+    setTimeout(() => this.getSentiment(), (700*((this.props.i)+1)) )
   }
 
-  componentDidUpdate = (prevProps) =>{
+  componentDidUpdate = (prevProps) => {
     if (this.props.news.title !== prevProps.news.title) {
       this.setState({articleSentiment: null, color: null})
-      setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)))
+      setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)) )
     }
   }
 
@@ -45,10 +45,6 @@ export default class Card extends Component {
 
   setColor = () => {
     const {articleSentiment} = this.state
-    // const blue = rgba(8, 46,	126,	1)
-    // const yellow = rgba(247,	200,	40,	1)
-    // const red =  rgba(219,	29,	19,	1)
-    // lighter blue = rgba(164,210,212,1)
     let colorValueNumber = articleSentiment.confidence
     if(articleSentiment.confidence > 86){colorValueNumber += 10} else {colorValueNumber -= 20}
     let colorValue = `.${colorValueNumber}`
@@ -82,10 +78,8 @@ export default class Card extends Component {
     switch(score_tag){
       case "P":
         return `Positive`
-        // break;
       case "N":
         return `Negative`
-        // break;
       default:
           return `Neutral`
     }
@@ -119,42 +113,3 @@ export default class Card extends Component {
 
 
 }
-//
-// const blue = rgba(8,	46,	126,	1)
-// const yellow = rgba(247,	200,	40,	1)
-// const red =  rgba(219,	29,	19,	1)
-
-//
-// Props
-// i:
-// 2
-// news:
-// {…}
-// source:
-// "wired"
-// State
-// articleSentiment:
-// {…}
-// agreement:
-// "DISAGREEMENT"
-// confidence:
-// "76"
-// irony:
-// "IRONIC"
-// model:
-// "general_en"
-// score_tag:
-// "P"
-// sentence_list:
-// Array[224]
-// sentimented_concept_list:
-// Array[155]
-// sentimented_entity_list:
-// Array[52]
-// status:
-// {…}
-// subjectivity:
-// "SUBJECTIVE"
-//
-// clicked:
-// false

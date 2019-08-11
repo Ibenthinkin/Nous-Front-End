@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import About from './About'
-import Login from './Login'
-import Signup from './Signup'
-
-import Contact from './Contact'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
+import About from './Components/About/About'
+import Login from './Components/Login/Login'
+import Signup from './Components/Signup/Signup'
+import Contact from './Components/Contact/Contact'
 
 const routing = (
   <Router>

@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import './App.css';
-import Outlet from './Outlet'
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import SideMenu from './SideMenu'
+import { Link } from 'react-router-dom'
+// import SideMenu from '../SideMenu/SideMenu'
 
 export default class NavBar extends Component {
 

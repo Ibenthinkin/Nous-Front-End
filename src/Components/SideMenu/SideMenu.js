@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
-import './App.css';
-import Outlet from './Outlet'
-// import ColorKey from './ColorKey'
-
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import Outlet from '../Outlet/Outlet'
+import {Link} from 'react-router-dom'
 
 
 export default class SideMenu extends Component {
