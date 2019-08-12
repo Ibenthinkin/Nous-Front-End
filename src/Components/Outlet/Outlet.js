@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import apiConfig from '../apiConfig'
 
 export default class Outlet extends Component {
   constructor(props){
@@ -15,7 +14,7 @@ export default class Outlet extends Component {
   }
 
   getSources = () => {
-    const newsSourcesURL = `https://newsapi.org/v2/sources?apiKey=${apiConfig.newsApi}`
+    const newsSourcesURL = `https://newsapi.org/v2/sources?apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
       fetch(newsSourcesURL)
       .then(response => response.json())
       .then(data => this.setState({data: data}))
