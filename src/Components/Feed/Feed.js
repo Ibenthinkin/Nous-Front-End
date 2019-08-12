@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import apiConfig from '../apiConfig'
 import NavBar from '../Navbar/Navbar'
 import CardsContainer from '../CardsContainer/CardsContainer'
-
-
 export default class Feed extends Component {
 
   constructor(props) {
@@ -21,7 +19,7 @@ export default class Feed extends Component {
   getArticles = () => {
     const {source} = this.props
     const newsURL = `https://newsapi.org/v2/everything?`
-    fetch(`${newsURL}pageSize=10&sources=${source}&apiKey=${apiConfig.newsApi}`)
+    fetch(`${newsURL}pageSize=10&sources=${source}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`)
       .then(response => response.json())
       .then((response) => this.setState({articles: response.articles}))
       .catch(error => {console.log(error)});

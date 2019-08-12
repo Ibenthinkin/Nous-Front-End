@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
-import apiConfig from '../apiConfig'
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 
 export default class Card extends Component {
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       clicked: false,
@@ -12,20 +9,20 @@ export default class Card extends Component {
     }
   }
 
-  componentDidMount = (props) => {
-    setTimeout(() => this.getSentiment(), (700*((this.props.i)+1)) )
+  componentDidMount = () => {
+    setTimeout(() => this.getSentiment(), (700*((this.props.index)+1)) )
   }
 
   componentDidUpdate = (prevProps) => {
     if (this.props.news.title !== prevProps.news.title) {
       this.setState({articleSentiment: null, color: null})
-      setTimeout(()=>this.getSentiment(), (700*((this.props.i)+1)) )
+      setTimeout(()=>this.getSentiment(), (700*((this.props.index)+1)) )
     }
   }
 
   getSentiment = () => {
     const {url} = this.props.news
-    const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${apiConfig.meaningApi}&lang=en&url=`
+    const sentimentURL = `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.REACT_APP_MEANING_API_KEY}&lang=en&url=`
     fetch(`${sentimentURL}${url}`, {
       method: 'POST',
       headers: {

@@ -6,7 +6,7 @@ import Card from '../Card/Card'
     return (
       <div className="cardsContainer">
         {props.articles.map((news, i) => {
-          return <Card news={news} i={i} source={props.source}/>
+          return <Card news={news} index={i} source={props.source}/>
         }
         )}
       </div>
