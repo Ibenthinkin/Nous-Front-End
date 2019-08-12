@@ -1,27 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Outlet from '../Outlet/Outlet'
 import {Link} from 'react-router-dom'
 
 
-export default class SideMenu extends Component {
-  constructor(props){
-    super(props)
-      this.state = ({
-        sideMenuOpen: this.props.sideMenuOpen
-      })
-  }
-
-
-  render (props) {
-
+ const SideMenu = ({sideMenuOpen, source, changeSource}) => {
     return (
-      <div id="mySidenav" className='sidenav' style={{width: this.props.sideMenuOpen ? 200 : 0 }}>
+      <div id="mySidenav" className='sidenav' style={{width: sideMenuOpen ? 200 : 0 }}>
           <Link to="/">Home</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign up</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <Outlet changeSource={this.props.changeSource} source={this.props.source}/>
+          <Outlet changeSource={changeSource} source={source}/>
             <div className='ColorKey'>
               <div className='colorSwatch blue' style={{backgroundColor:`rgba(164,210,212,1)`}}>
                 <p>Positive</p>
@@ -36,4 +26,6 @@ export default class SideMenu extends Component {
       </div>
     )
   }
-}
+
+
+export default SideMenu;
