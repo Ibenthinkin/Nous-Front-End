@@ -5,7 +5,13 @@ I made this app so that the experience of reading the news would be a little les
 
 I made this because most websites,  especially news outlets, design their page layouts and content to maximize engagement.  This means they are trying to persuade, cajole, trick, and ensnare you into looking at what they want you to look at, for as long as possible.
 
-Some even track your behavior and try to only show you content designed to delight or infuriate you, to maximize your interest.  I don't think this is a good way to absorb information.  Hopefully this tool will help!  
+Some even track your behavior and try to only show you content designed to delight or infuriate you, to maximize your interest.  I don't think this is a good way to absorb information.  Hopefully this tool will help!
+
+Thanks for visiting!
+
+[Demo Video](https://youtu.be/cACWEbEmuk0)
+[Mobile View Demo Video](https://youtu.be/iXt64cRudbE)
+
 
 
 ![](ScreenShot.png)
@@ -15,8 +21,8 @@ Some even track your behavior and try to only show you content designed to delig
 ## Installation
 
 1. Fork and Clone down the repo
-2. Visit[https://newsapi.org/](newsapi.org/) to get a Free API Key
-3. Visit[https://www.meaningcloud.com/](meaningcloud.com/) to get a Free API Key
+2. Visit[newsapi.org/](http://newsapi.org/) to get a Free API Key
+3. Visit[meaningcloud.com/](http://www.meaningcloud.com/) to get a Free API Key
 4. In the root directory of the project make a file called .env and define environmental variables
  ```
 REACT_APP_NEWS_API_KEY = theapikeyuoutgot782734983242 
@@ -36,7 +42,7 @@ npm start
 
 ## Meta
 
-Ben Reilly –  YourEmail@example.com
+Ben Reilly –  benjamin.reilly@gmail.com
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
