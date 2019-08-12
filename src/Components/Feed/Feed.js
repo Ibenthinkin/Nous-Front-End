@@ -10,7 +10,6 @@ export default class Feed extends Component {
     super(props)
     this.state = {
       articles: [],
-      articlesWithSentiment: [],
       sideMenuOpen: this.props.sideMenuOpen
     }
   }
@@ -20,11 +19,11 @@ export default class Feed extends Component {
   }
 
   getArticles = () => {
-    const source = this.props.source
+    const {source} = this.props
     const newsURL = `https://newsapi.org/v2/everything?`
     fetch(`${newsURL}pageSize=10&sources=${source}&apiKey=${apiConfig.newsApi}`)
       .then(response => response.json())
-      .then((articles) => this.setState({articles:articles.articles}))
+      .then((response) => this.setState({articles: response.articles}))
       .catch(error => {console.log(error)});
   }
 
@@ -35,15 +34,20 @@ export default class Feed extends Component {
   }
 
 
-  render(props) {
-
+  render() {
+    const {sideMenuOpen, changeSource, source, toggleMenu} = this.props
       return (
-        <div className='feedbody' style={{marginLeft: this.props.sideMenuOpen ? 200 : 0 }}>
-          <NavBar articles={this.props.articles}
-          changeSource={this.props.changeSource}
-          source={this.props.source}
-          toggleMenu={this.props.toggleMenu}/>
-          <CardsContainer source={this.props.source} changeSource={this.props.changeSource} articles={this.state.articles}/>
+        <div className='feedbody' style={{marginLeft: sideMenuOpen ? 200 : 0 }}>
+          <NavBar 
+            changeSource={changeSource}
+            source={source}
+            toggleMenu={toggleMenu}
+          />
+          <CardsContainer 
+            source={source} 
+            changeSource={changeSource} 
+            articles={this.state.articles}
+          />
         </div>
 
         )

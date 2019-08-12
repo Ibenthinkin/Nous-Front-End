@@ -9,7 +9,6 @@ export default class App extends Component{
     this.state = {
       source: 'the-new-york-times',
       sideMenuOpen: false
-
     }
   }
 
@@ -26,10 +25,20 @@ export default class App extends Component{
 
 
   render(){
-    return(
+    const {source, sideMenuOpen} = this.state
+    return (
       <div id="app" className='pageWrapper'>
-        <SideMenu  source={this.state.source} changeSource={this.changeSource} toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
-          <Feed source={this.state.source} changeSource={this.changeSource} toggleMenu={this.toggleMenu} sideMenuOpen={this.state.sideMenuOpen}/>
+        <SideMenu  source={source} 
+          changeSource={this.changeSource} 
+          toggleMenu={this.toggleMenu} 
+          sideMenuOpen={sideMenuOpen}
+        />
+
+        <Feed source={source} 
+          changeSource={this.changeSource} 
+          toggleMenu={this.toggleMenu} 
+          sideMenuOpen={sideMenuOpen}
+        />
       </div>
     )
   }

@@ -45,23 +45,26 @@ export default class Card extends Component {
 
   setColor = () => {
     const {articleSentiment} = this.state
-    let colorValueNumber = articleSentiment.confidence
-    if(articleSentiment.confidence > 86){colorValueNumber += 10} else {colorValueNumber -= 20}
-    let colorValue = `.${colorValueNumber}`
-    let tone = ``
+    let colorValue = `.${this.colorValueAmplifier(articleSentiment.confidence)}`
+    let color
+    let tone
       switch(articleSentiment.score_tag) {
         case "P":
           tone = `164,210,212`
           break;
         case "N":
-        tone = `219,29,19`
+          tone = `219,29,19`
           break;
         default:
           tone = `247,200,40`
       }
-      const color = `rgba(${tone}, ${colorValue})`
+        color = `rgba(${tone}, ${colorValue})`
+        this.setState({color: color})
+  }
 
-      this.setState({color: color})
+  colorValueAmplifier = (score) =>{
+    score > 86 ? score += 10 : score -= 20
+    return score
   }
 
 
@@ -75,37 +78,45 @@ export default class Card extends Component {
 
   lengthenScoreTag = () => {
     let {score_tag} = this.state.articleSentiment
-    switch(score_tag){
-      case "P":
-        return `Positive`
-      case "N":
-        return `Negative`
-      default:
-          return `Neutral`
-    }
+      switch(score_tag){
+        case "P":
+          return `Positive`
+        case "N":
+          return `Negative`
+        default:
+            return `Neutral`
+      }
 
   }
 
 
-  render(props){
-    const news = this.props.news
-    const i = this.props.i
+  render(props) {
+    const {news, source, i} = this.props
+    const {articleSentiment, color} = this.state
 
-        return(
-          <div className='card' key={i} onClick={this.handleClick}
+        return (
+          <div 
+            className='card' key={i} onClick={this.handleClick}
             onMouseEnter={this.toggleHover}
-              onMouseLeave={this.toggleHover}
-              style={{backgroundColor: this.state.color ? this.state.color : 'rgba(130,127,123,.8)' }}
-              >
+            onMouseLeave={this.toggleHover}
+            style={{backgroundColor: color ? color : 'rgba(130,127,123,.8)' }}
+          >
             <div className="content">
               <h3>
-                <a href={news.url} target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={news.url} target="_blank" rel="noopener noreferrer">
                   {news.title}
                 </a>
               </h3>
-              <p>{news.description}</p>
-                  <p> By {news.author ? news.author : this.props.source}</p>
-                  <p>Sentiment Score: {this.state.articleSentiment ? ` ${this.lengthenScoreTag()} - ${this.state.articleSentiment.confidence}`: `NO sentiment score`}</p>
+              <p>
+                {news.description}
+              </p>
+              <p> 
+                By {news.author ? news.author : source}
+              </p>
+              <p>
+                Sentiment Score: {articleSentiment ? ` ${this.lengthenScoreTag()} - ${articleSentiment.confidence}`: `NO sentiment score`}
+              </p>
             </div>
           </div>
         )
