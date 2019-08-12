@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import apiConfig from '../apiConfig'
 import NavBar from '../Navbar/Navbar'
 import CardsContainer from '../CardsContainer/CardsContainer'
 export default class Feed extends Component {
-
+  
   constructor(props) {
     super(props)
     this.state = {
