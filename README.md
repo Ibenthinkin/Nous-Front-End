@@ -21,8 +21,8 @@ Thanks for visiting!
 ## Installation
 
 1. Fork and Clone down the repo
-2. Visit[newsapi.org/](http://newsapi.org/) to get a Free API Key
-3. Visit[meaningcloud.com/](http://www.meaningcloud.com/) to get a Free API Key
+2. Visit [newsapi.org/](http://newsapi.org/) to get a Free API Key
+3. Visit [meaningcloud.com/](http://www.meaningcloud.com/) to get a Free API Key
 4. In the root directory of the project make a file called .env and define environmental variables
  ```
 REACT_APP_NEWS_API_KEY = theapikeyuoutgot782734983242 
