@@ -13,9 +13,9 @@ Thanks for visiting!
 [Mobile View Demo Video](https://youtu.be/iXt64cRudbE)
 
 
-![](Resouces/ScreenShot.png)
-![](Resouces/ScreenShotMenu.png)
-![](Resouces/PhoneSize.png)
+![](./src/Resouces/ScreenShot.png)
+![](./src/Resouces/ScreenShotMenu.png)
+![](./src/Resouces/PhoneSize.png)
 
 ## Installation
 
